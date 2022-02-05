@@ -22,6 +22,7 @@
 
 
 
+using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ using System.Threading.Tasks;
 
 namespace SATBruteforce
 {
+    
      class SatSolver
     {
         private List<Operator> operators;
@@ -53,6 +55,7 @@ namespace SATBruteforce
                 "equal", "EQU", (p, q) => p == q, 3, false)
             );
         }
+
         public void Solve(string expression, List<string>? rules=null)
         {
             string fullExpression;

@@ -15,4 +15,8 @@
     <None Include="E:\Documents\Dev\ISPM-projects\TD-IA\C-SHARP-SAT-Solver-bruteforce\SATBruteforce\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+  </ItemGroup>
+
 </Project>
