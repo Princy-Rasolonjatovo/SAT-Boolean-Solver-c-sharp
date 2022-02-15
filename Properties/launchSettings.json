@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SATBruteforce": {
+      "commandName": "Project",
+      "commandLineArgs": "-e\"(r IMPLY p)\" -c \"p IMPLY p),(q IMPLY p),(q IMPLY r),(r IMPLY q)\""
+    }
+  }
+}

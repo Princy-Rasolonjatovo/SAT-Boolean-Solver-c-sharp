@@ -14,7 +14,6 @@ namespace SATBruteforce
     {
         static string HelpText =
 @"
-
 Solve a boolean expression using bruteforce
 # Operators
 - EQUA     ( == )
@@ -25,15 +24,15 @@ Solve a boolean expression using bruteforce
 
 Examples:
 - With conditions 
-    SATSolver.exe -e (r IMPLY p) -c (p IMPLY p) (q IMPLY p) (q IMPLY r) (r IMPLY q)
+    SATSolver.exe -e ""(r IMPLY p)"" -c ""(p IMPLY p),(q IMPLY p),(q IMPLY r),(r IMPLY q)""
 - Without Conditions
-    a) SATSolver.exe -e (p) AND (p IMPLY q) AND (q IMPLY r)  
-    b) SATSolver.exe -e a AND NOT b
+    a) SATSolver.exe -e ""(p) AND (p IMPLY q) AND (q IMPLY r) ""
+    b) SATSolver.exe -e ""a AND NOT b""
 ";
         [Option('e', "expression", Required = true, HelpText = "the logic expression with known verbs (NOT, IMPLY, EQU, AND, OR)")]
         public string Expression { get; set; } = "p IMPLY q";  // Default expression 
-        [Option('c', "conditions", Required = false, HelpText = "List of additionnal constraints")]
-        public IEnumerable<string> Conditions { get; set; } = null;
+        [Option('c', "conditions", Required = false, HelpText = "List of additionnal constraints separated by , or ; ")]
+        public string Conditions { get; set; } = null;
         public void Execute()
         {
             SatSolver solver = new SatSolver();
@@ -42,7 +41,7 @@ Examples:
 
             if (this.Conditions != null)
             {
-                foreach (string condition in this.Conditions)
+                foreach (string condition in this.Conditions.Split(',',';'))
                 {
                     sb.Append("(");
                     sb.Append(condition.Trim());
